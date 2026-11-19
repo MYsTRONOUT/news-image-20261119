@@ -1,41 +1,34 @@
-"""Entry program for make.fun news-image-20261119 (Python 3.13, stdlib only).
+"""news-image-20261119 entry program (Python 3.13, stdlib only).
 
-The entry image is the entry.png shipped beside this file; the program
-copies it byte-for-byte to $MAKEFUN_OUTPUT_DIR/entry.png (default /output).
-No network, no randomness: two runs write identical bytes.
+Ships the entry image beside this file and copies it byte-for-byte to
+$MAKEFUN_OUTPUT_DIR/entry.png (default /output). No network, no clock,
+no randomness: two runs write identical bytes.
 
-Outside the grader's container, MAKEFUN_OUTPUT_DIR stands in for /output:
-    mkdir -p out && MAKEFUN_OUTPUT_DIR=out python3 main.py
+Run locally with MAKEFUN_OUTPUT_DIR=out python3 main.py after mkdir -p out.
 """
 
-import hashlib
-import os
-import shutil
-import sys
-from pathlib import Path
+import hashlib, os, shutil, sys
+import pathlib
 
-HERE = Path(__file__).resolve().parent
-SRC = HERE / "entry.png"
+SRC = pathlib.Path(__file__).resolve().parent / "entry.png"
 
 
-def _sha256(path):
-    digest = hashlib.sha256()
-    with open(path, "rb") as fh:
-        for chunk in iter(lambda: fh.read(65536), b""):
-            digest.update(chunk)
-    return digest.hexdigest()
+def digest(path):
+    h = hashlib.sha256()
+    h.update(path.read_bytes())
+    return h.hexdigest()
 
 
-def main():
-    out_dir = Path(os.environ.get("MAKEFUN_OUTPUT_DIR", "/output"))
-    out_dir.mkdir(parents=True, exist_ok=True)
-    dst = out_dir / "entry.png"
-    shutil.copyfile(SRC, dst)
-    if _sha256(dst) != _sha256(SRC):
-        print("error: copied file does not match source", file=sys.stderr)
-        sys.exit(1)
-    print(f"wrote {dst} ({dst.stat().st_size} bytes)")
+def run():
+    # One straight copy and a hash comparison; nothing varies between runs.
+    out = pathlib.Path(os.environ.get("MAKEFUN_OUTPUT_DIR", "/output"))
+    out.mkdir(parents=True, exist_ok=True)
+    target = out / "entry.png"
+    shutil.copyfile(SRC, target)
+    if digest(target) != digest(SRC):
+        print("error: copy mismatch", file=sys.stderr)
+        raise SystemExit(1)
+    print(f"wrote {target} ({target.stat().st_size} bytes)")
 
 
-if __name__ == "__main__":
-    main()
+run()
