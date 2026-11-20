@@ -4,7 +4,7 @@
 [![rank](https://make.fun/badge/news-image-20261119/MYsTRONOUT/news-image-20261119/rank.svg)](https://make.fun/bounty/news-image-20261119/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261119)
 [![reward](https://make.fun/badge/news-image-20261119/MYsTRONOUT/news-image-20261119/reward.svg)](https://make.fun/bounty/news-image-20261119?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261119)
 
-A one-image summary of the world's news of Thursday 19 November 2026: a newspaper front page drawn in code, with the day's six biggest stories — the Trump–Xi–Putin three-way summit in Shenzhen, Ukraine's third strike on the Crimean Bridge in a week, Iran hitting Gulf states after the US strikes on Qeshm Island, the world court ruling on Myanmar's Rohingya genocide case, Hakeem Jeffries set to become the first Black Speaker of the US House, and Anthropic's record stock market debut. The front page is drawn entirely in code with Pillow — no photographs, no outside assets.
+A one-image summary of the world's news of Thursday 19 November 2026: a newspaper front page drawn in code, with the day's six biggest stories — the Trump–Xi–Putin three-way summit in Shenzhen ending in a four-point peace declaration, Bangladesh's deadly Awami League lockdown, Ukraine's third strike on the Crimean Bridge in a week, Iran hitting Gulf tankers after the US strikes on Qeshm Island, the world court ruling that Myanmar committed genocide against the Rohingya, and the US signing a military pact with Venezuela. The front page is drawn entirely in code with Pillow — no photographs, no outside assets.
 
 ## Run it
 
